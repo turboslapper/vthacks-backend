@@ -16,6 +16,7 @@ This is an Express-based API for managing dorm information, allowing users to cr
   {
     "name": "Sunset Hall",
     "room_number": 102,
+    "userName": "Azraf",
     "price": 1200,
     "bathroom_cleanliness": 4,
     "wifi_strength": 5,
@@ -30,6 +31,7 @@ This is an Express-based API for managing dorm information, allowing users to cr
   ```json
   {
     "_id": "60e4a08c8f1f8e1488b8f02e",
+    "userName": "Azraf",
     "userId": "60e4a08c8f1f8e1488b8f029",
     "name": "Sunset Hall",
     "room_number": 102,
@@ -57,6 +59,7 @@ This is an Express-based API for managing dorm information, allowing users to cr
     {
       "_id": "60e4a08c8f1f8e1488b8f02e",
       "userId": "60e4a08c8f1f8e1488b8f029",
+      "userName": "Azraf",
       "name": "Sunset Hall",
       "room_number": 102,
       "price": 1200,
@@ -82,6 +85,7 @@ This is an Express-based API for managing dorm information, allowing users to cr
   {
     "_id": "60e4a08c8f1f8e1488b8f02e",
     "userId": "60e4a08c8f1f8e1488b8f029",
+    "userName": "Azraf",
     "name": "Sunset Hall",
     "room_number": 102,
     "price": 1200,
@@ -111,6 +115,7 @@ This is an Express-based API for managing dorm information, allowing users to cr
   {
     "name": "Sunset Hall Updated",
     "room_number": 102,
+    "userName": "Azraf",
     "price": 1300,
     "bathroom_cleanliness": 5,
     "wifi_strength": 5,
@@ -126,6 +131,7 @@ This is an Express-based API for managing dorm information, allowing users to cr
   {
     "_id": "60e4a08c8f1f8e1488b8f02e",
     "userId": "60e4a08c8f1f8e1488b8f029",
+    "userName": "Azraf",
     "name": "Sunset Hall Updated",
     "room_number": 102,
     "price": 1300,
@@ -179,6 +185,7 @@ Users can now leave a comment (up to 500 characters) when creating or updating d
 {
   "name": "Sunset Hall",
   "room_number": 102,
+  "userName": "Azraf",
   "price": 1200,
   "bathroom_cleanliness": 4,
   "wifi_strength": 5,

@@ -3,13 +3,14 @@ const Dorm = require('../models/Dorm');
 const router = express.Router();
 
 // Create a dorm
-// Create a dorm
 router.post('/', async (req, res) => {
-    const { name, room_number, price, bathroom_cleanliness, wifi_strength, room_size, safety, air_conditioning, roommate, comment } = req.body;
+    const { userName, name, room_number, price, bathroom_cleanliness, wifi_strength, room_size, safety, air_conditioning, roommate, comment } = req.body;
+    
     try {
         const dorm = new Dorm({
-            userId: req.user.userId, // Associate dorm with the logged-in user
-            name,
+            userId: req.user.userId,   // Associate dorm with the logged-in user
+            userName,                  // Store user's name
+            name,                      // Dorm name
             room_number,
             price,
             bathroom_cleanliness,
@@ -18,8 +19,9 @@ router.post('/', async (req, res) => {
             safety,
             air_conditioning,
             roommate,
-            comment // Add comment to the dorm creation
+            comment                    // Add comment to the dorm creation
         });
+        
         await dorm.save();
         res.status(201).json(dorm);
     } catch (error) {
@@ -27,7 +29,6 @@ router.post('/', async (req, res) => {
         res.status(400).json({ message: 'Error creating dorm', error: error.message || error });
     }
 });
-
 
 // Get all dorms
 router.get('/', async (req, res) => {
@@ -76,7 +77,6 @@ router.put('/:id', async (req, res) => {
     }
 });
 
-
 // Delete a dorm by ID
 router.delete('/:id', async (req, res) => {
     try {
@@ -99,6 +99,5 @@ router.delete('/:id', async (req, res) => {
         return res.status(500).json({ message: 'Error deleting dorm', error: error.message || error });
     }
 });
-
 
 module.exports = router;

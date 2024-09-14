@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 
 const dormSchema = new mongoose.Schema({
     userId: { type: String, required: true },  // User who created the dorm
-    name: { type: String, required: true },
+    userName: { type: String, required: true }, // User's name
+    name: { type: String, required: true },     // Dorm name
     room_number: { type: Number, required: true },
     price: { type: Number, required: true },
     bathroom_cleanliness: { type: Number, min: 1, max: 5, required: true },
