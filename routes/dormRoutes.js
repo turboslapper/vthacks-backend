@@ -3,8 +3,9 @@ const Dorm = require('../models/Dorm');
 const router = express.Router();
 
 // Create a dorm
+// Create a dorm
 router.post('/', async (req, res) => {
-    const { name, room_number, price, bathroom_cleanliness, wifi_strength, room_size, safety, air_conditioning, roommate } = req.body;
+    const { name, room_number, price, bathroom_cleanliness, wifi_strength, room_size, safety, air_conditioning, roommate, comment } = req.body;
     try {
         const dorm = new Dorm({
             userId: req.user.userId, // Associate dorm with the logged-in user
@@ -16,7 +17,8 @@ router.post('/', async (req, res) => {
             room_size,
             safety,
             air_conditioning,
-            roommate
+            roommate,
+            comment // Add comment to the dorm creation
         });
         await dorm.save();
         res.status(201).json(dorm);
@@ -25,6 +27,7 @@ router.post('/', async (req, res) => {
         res.status(400).json({ message: 'Error creating dorm', error: error.message || error });
     }
 });
+
 
 // Get all dorms
 router.get('/', async (req, res) => {
@@ -51,7 +54,7 @@ router.get('/:id', async (req, res) => {
 
 // Update a dorm by ID
 router.put('/:id', async (req, res) => {
-    const { name, room_number, price, bathroom_cleanliness, wifi_strength, room_size, safety, air_conditioning, roommate } = req.body;
+    const { name, room_number, price, bathroom_cleanliness, wifi_strength, room_size, safety, air_conditioning, roommate, comment } = req.body;
     try {
         const dorm = await Dorm.findById(req.params.id);
         if (!dorm) {
@@ -69,6 +72,7 @@ router.put('/:id', async (req, res) => {
         dorm.safety = safety;
         dorm.air_conditioning = air_conditioning;
         dorm.roommate = roommate;
+        dorm.comment = comment; // Add comment to the update
 
         await dorm.save();
         res.status(200).json(dorm);

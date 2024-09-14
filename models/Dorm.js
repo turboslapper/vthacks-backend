@@ -10,7 +10,8 @@ const dormSchema = new mongoose.Schema({
     room_size: { type: Number, required: true },
     safety: { type: Number, min: 1, max: 5, required: true },
     air_conditioning: { type: Boolean, default: false },
-    roommate: { type: Boolean, default: false }
+    roommate: { type: Boolean, default: false },
+    comment: { type: String, maxlength: 500 }  // Comment section with max length of 500 characters
 }, { timestamps: true });
 
 module.exports = mongoose.model('Dorm', dormSchema);

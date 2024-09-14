@@ -22,7 +22,8 @@ This is an Express-based API for managing dorm information, allowing users to cr
     "room_size": 300,
     "safety": 5,
     "air_conditioning": true,
-    "roommate": false
+    "roommate": false,
+    "comment": "Great dorm with amazing facilities."
   }
   ```
 - **Response** (Success):
@@ -39,6 +40,7 @@ This is an Express-based API for managing dorm information, allowing users to cr
     "safety": 5,
     "air_conditioning": true,
     "roommate": false,
+    "comment": "Great dorm with amazing facilities.",
     "createdAt": "2021-07-06T18:33:48.034Z",
     "updatedAt": "2021-07-06T18:33:48.034Z",
     "__v": 0
@@ -64,6 +66,7 @@ This is an Express-based API for managing dorm information, allowing users to cr
       "safety": 5,
       "air_conditioning": true,
       "roommate": false,
+      "comment": "Great dorm with amazing facilities.",
       "createdAt": "2021-07-06T18:33:48.034Z",
       "updatedAt": "2021-07-06T18:33:48.034Z"
     }
@@ -87,7 +90,8 @@ This is an Express-based API for managing dorm information, allowing users to cr
     "room_size": 300,
     "safety": 5,
     "air_conditioning": true,
-    "roommate": false
+    "roommate": false,
+    "comment": "Great dorm with amazing facilities."
   }
   ```
 - **Response** (Not Found):
@@ -113,7 +117,8 @@ This is an Express-based API for managing dorm information, allowing users to cr
     "room_size": 320,
     "safety": 5,
     "air_conditioning": true,
-    "roommate": false
+    "roommate": false,
+    "comment": "Updated the dorm with a better comment!"
   }
   ```
 - **Response**:
@@ -130,6 +135,7 @@ This is an Express-based API for managing dorm information, allowing users to cr
     "safety": 5,
     "air_conditioning": true,
     "roommate": false,
+    "comment": "Updated the dorm with a better comment!",
     "createdAt": "2021-07-06T18:33:48.034Z",
     "updatedAt": "2021-07-07T18:33:48.034Z"
   }
@@ -159,6 +165,30 @@ This is an Express-based API for managing dorm information, allowing users to cr
     "message": "Dorm not found"
   }
   ```
+
+## New Feature: Comment Section
+
+Users can now leave a comment (up to 500 characters) when creating or updating dorm information.
+
+- **Field**: `comment`
+- **Type**: String (Maximum length: 500 characters)
+
+### Example with Comment
+
+```json
+{
+  "name": "Sunset Hall",
+  "room_number": 102,
+  "price": 1200,
+  "bathroom_cleanliness": 4,
+  "wifi_strength": 5,
+  "room_size": 300,
+  "safety": 5,
+  "air_conditioning": true,
+  "roommate": false,
+  "comment": "This dorm has an amazing view!"
+}
+```
 
 ## Authorization
 
