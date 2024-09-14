@@ -52,34 +52,30 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-// Update a dorm by ID
+// Update a dorm by ID (with partial updates)
 router.put('/:id', async (req, res) => {
-    const { name, room_number, price, bathroom_cleanliness, wifi_strength, room_size, safety, air_conditioning, roommate, comment } = req.body;
     try {
-        const dorm = await Dorm.findById(req.params.id);
+        const { id } = req.params;
+        const updates = req.body; // Get only the fields the user wants to update
+
+        // Find and update the dorm with the given ID
+        const dorm = await Dorm.findByIdAndUpdate(
+            id,
+            { $set: updates }, // Set only the fields provided in the request body
+            { new: true, runValidators: true } // Return the updated dorm and validate the data
+        );
+
         if (!dorm) {
             return res.status(404).json({ message: 'Dorm not found' });
         }
-        if (dorm.userId !== req.user.userId) {
-            return res.status(403).json({ message: 'You are not authorized to edit this dorm' });
-        }
-        dorm.name = name;
-        dorm.room_number = room_number;
-        dorm.price = price;
-        dorm.bathroom_cleanliness = bathroom_cleanliness;
-        dorm.wifi_strength = wifi_strength;
-        dorm.room_size = room_size;
-        dorm.safety = safety;
-        dorm.air_conditioning = air_conditioning;
-        dorm.roommate = roommate;
-        dorm.comment = comment; // Add comment to the update
 
-        await dorm.save();
         res.status(200).json(dorm);
     } catch (error) {
-        res.status(400).json({ message: 'Error updating dorm', error });
+        console.error('Error updating dorm:', error);
+        res.status(400).json({ message: 'Error updating dorm', error: error.message || error });
     }
 });
+
 
 // Delete a dorm by ID
 router.delete('/:id', async (req, res) => {
