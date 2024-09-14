@@ -1,15 +1,16 @@
 const mongoose = require('mongoose');
 
 const dormSchema = new mongoose.Schema({
-    name: { type: String, required: true },              // Dorm name
-    room_number: { type: Number, required: true },       // Room number
+    userId: { type: String, required: true },  // User who created the dorm
+    name: { type: String, required: true },
+    room_number: { type: Number, required: true },
     price: { type: Number, required: true },
-    bathroom_cleanliness: { type: Number, min: 1, max: 5, required: true }, // 1 to 5 scale
-    wifi_strength: { type: Number, min: 1, max: 5, required: true },        // 1 to 5 scale
-    room_size: { type: Number, required: true },                           // In square feet
-    safety: { type: Number, min: 1, max: 5, required: true },              // 1 to 5 scale
-    air_conditioning: { type: Boolean, default: false },                   // Air conditioning availability
-    roommate: { type: Boolean, default: false }                            // Roommate presence
+    bathroom_cleanliness: { type: Number, min: 1, max: 5, required: true },
+    wifi_strength: { type: Number, min: 1, max: 5, required: true },
+    room_size: { type: Number, required: true },
+    safety: { type: Number, min: 1, max: 5, required: true },
+    air_conditioning: { type: Boolean, default: false },
+    roommate: { type: Boolean, default: false }
 }, { timestamps: true });
 
 module.exports = mongoose.model('Dorm', dormSchema);
