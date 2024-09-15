@@ -40,6 +40,18 @@ router.get('/', async (req, res) => {
     }
 });
 
+// Get all dorms for the logged-in user
+router.get('/user', async (req, res) => {
+    try {
+        const userId = req.user.userId; // Retrieve the logged-in user's ID
+        const userDorms = await Dorm.find({ userId }); // Find dorms associated with the userId
+        res.status(200).json(userDorms);
+    } catch (error) {
+        console.error('Error fetching user dorms:', error);
+        res.status(400).json({ message: 'Error fetching user dorms', error: error.message || error });
+    }
+});
+
 // Get a dorm by ID
 router.get('/:id', async (req, res) => {
     try {
